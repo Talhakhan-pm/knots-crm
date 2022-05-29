@@ -1,0 +1,39 @@
+# == Schema Information
+#
+# Table name: leads
+#
+#  id             :integer          not null, primary key
+#  agent_id       :integer          not null
+#  address        :string
+#  full_name      :string
+#  provider       :integer          default(0)
+#  phone_number   :integer
+#  account_number :integer
+#  bill           :decimal(10, 2)
+#  descriptor     :integer          default(0)
+#  dis_bill       :decimal(10, 2)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  agent: one
+  address: MyString
+  full_name: MyString
+  provider: 1
+  phone_number: 1
+  account_number: 1
+  bill: 1
+  descriptor: 1
+  dis_bill: 1
+
+two:
+  agent: two
+  address: MyString
+  full_name: MyString
+  provider: 1
+  phone_number: 1
+  account_number: 1
+  bill: 1
+  descriptor: 1
+  dis_bill: 1

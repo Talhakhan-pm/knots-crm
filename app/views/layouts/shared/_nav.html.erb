@@ -1,0 +1,7 @@
+<div class="flex-row justify-center items-center text-center">
+<% if current_user  %>
+  Email: <%= current_user.email %>
+  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete },  class: "bg-white rounded-lg outline px-4 py-2 text-red-500 ml-4" %>
+  <%= link_to "Edit User", edit_user_registration_path(current_user), class: "bg-white rounded-lg outline px-4 py-2 text-yellow-500 ml-4" %>
+<% end %>
+</div>

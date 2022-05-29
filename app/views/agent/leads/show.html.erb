@@ -1,0 +1,9 @@
+<h1>Name: <%=@lead.full_name%></h1>
+<h1 class="font-semibold">Phone Number: <%= @lead.phone_number%></h1>
+<h1 class="font-semibold">Account Number: <%= @lead.account_number%></h1>
+
+<pre><%= JSON.pretty_generate(@lead.as_json)%></pre>
+<div class= "mt-8">
+<%= link_to "Edit", edit_agent_lead_path(@lead), class: "bg-yellow-500 rounded-lg text-grey-800 px-4 py-3 " %>
+</div>
+

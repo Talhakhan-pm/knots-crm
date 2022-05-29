@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_24_112955) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_29_124238) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_24_112955) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "leads", force: :cascade do |t|
+    t.integer "agent_id", null: false
+    t.string "address"
+    t.string "full_name"
+    t.integer "provider", default: 0
+    t.integer "phone_number"
+    t.integer "account_number"
+    t.decimal "bill", precision: 10, scale: 2
+    t.integer "descriptor", default: 0
+    t.decimal "dis_bill", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_leads_on_agent_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +97,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_24_112955) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "leads", "users", column: "agent_id"
 end

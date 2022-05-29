@@ -1,0 +1,41 @@
+<h1 class= "font-mono text-xl font-semibold mb-4">Edit the Listing</h1>
+
+<form action="<%=agent_lead_path(@lead)%>" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+  <input type="hidden" name="_method" value="PUT">
+  <div>
+      <label> Full Name</label>
+      <input type="text" name="lead[full_name]" value="<%=@lead.full_name	%>" id="">
+    </div>
+    <div>
+    <label> Phone Number
+      <input type="text" name="lead[phone_number]" value="<%=@lead.phone_number	%>" id="">
+    </label>
+    </div>
+    <div data-controller= "address" data-action="map-loaded@window->address#initGoogle">
+      <label> Address
+        <input type="text" name="lead[address]" value="<%=@lead.address	%>"  data-address-target="input">
+      </label>
+    </div>
+    <div>
+    <label> Provider
+      <select name="lead[provider]">
+      <option value="<%=@lead.provider%>"><%= @lead.provider %></option>
+      <option value="Directv">Direct TV</option>
+      <option value="Spectrum">Spectrum</option>
+      <option value="Xfinity">Xfinity</option>
+      </select>
+    </label>
+    </div>
+    <div>
+    <label> Account Number
+      <input type="text" name="lead[account_number]" value="<%=@lead.account_number	%>" id="">
+    </label>
+    </div>
+    <div>
+    <label> Total Bill
+      <input type="text" name="lead[bill]" value="<%=@lead.bill	%>" id="">
+    </label>
+    </div>
+  <input type="submit" value="Submit" class="bg-blue-500 rounded-sm text-white px-4 py-3 mt-4">
+</form>

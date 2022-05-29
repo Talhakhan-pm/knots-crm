@@ -1,0 +1,66 @@
+<div class= "text-center" >
+<h1 class= "font-sans text-xl font-semibold mb-4">Enter your lead</h1>
+</div>
+
+<div class="flex justify-center">
+<div class=" h-screen flex justify-center items-start w-4/5 rounded-lg text-gray-800 mt-12 bg-gray-300">
+<form action="/agent/leads" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+  <div class= "w-96">
+    <div class= "mb-4 mt-4">
+      <label class= "block"> Full Name</label>
+      <div>
+      <input type="text" name="lead[full_name]" value="<%=@lead.full_name	%>" id="" class= "focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-10 sm:text-sm border-gray-900 rounded-md py-2 border-sm pl-2" placeholder= "Enter Customers Full Name">
+      </div>
+    </div>
+    <div class= "mb-4">
+    <label class= "block"> Phone Number
+      <input type="number" name="lead[phone_number]" value="<%=@lead.phone_number	%>" id="" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 pr-10 sm:text-sm border-gray-300 rounded-md py-2 outline-none appearance-none" placeholder="+1 707 216 2136">
+    </label>
+    </div>
+    <div class= "mb-4" data-controller="address" data-action="map-loaded@window->address#initGoogle">
+      <label class= "block"> Address
+      </label>
+        <input type="text" name="lead[address]" value="<%=@lead.address	%>" data-address-target="input" autocomplete="off" class= "focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 sm:text-sm border-gray-300 rounded-md py-2">
+    </div>
+
+    <div>
+      <label for="Provider" class="block text-sm font-medium text-gray-700">Provider</label>
+      <select name="lead[provider]" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" value = " <%= @lead.provider %> ">
+      <option value="Directv">Direct TV</option>
+      <option value="Spectrum">Spectrum</option>
+      <option value="Xfinity">Xfinity</option>
+      </select>
+    </div>
+
+    <div class= " mt-4 ">
+      <label for="account-number" class="block text-sm font-medium text-gray-700">Account number</label>
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <input type="text" name="lead[account_number]" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-10 sm:text-sm border-gray-300 rounded-md py-2 pl-2" placeholder="More than 9 Digits"  value= "<%= @lead.account_number%>" autocomplete= "off">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <!-- Heroicon name: solid/question-mark-circle -->
+          <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+      <div class="mt-1 relative rounded-md shadow-sm">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <span class="text-gray-500 sm:text-sm"> $ </span>
+        </div>
+        <input type="text" name="lead[bill]" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md py-2" placeholder="0.00" aria-describedby="price-currency" value= <%= @lead.bill %>>
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <span class="text-gray-500 sm:text-sm" id="price-currency"> USD </span>
+        </div>
+      </div>
+    </div>
+    <div class= "my-4">
+      <input type="submit" value="Submit" class="bg-blue-500 rounded-lg text-white px-4 py-2 mt-4">
+    </div>  
+    </div>
+</form>
+</div>
+</div>
