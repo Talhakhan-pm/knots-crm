@@ -5,3 +5,12 @@
 <% end %>
 <h1>StaticPages#dashboard</h1>
 <p>Find me in app/views/static_pages/dashboard.html.erb</p>
+
+<% @users.each do |l| %>
+  <% if l != nil %>
+  Agent: <%= l.email %>
+  Total Sales: $<%= l.leads.during_last(3.hours).sum(:bill) %></br>
+  <% else %>
+    <% redirect_to agent_leads_path(l)%>
+    <% end %>
+<% end %>
