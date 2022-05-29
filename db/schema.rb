@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_29_124238) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_29_135853) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_29_124238) do
     t.string "address"
     t.string "full_name"
     t.integer "provider", default: 0
-    t.integer "phone_number"
+    t.string "phone_number"
     t.integer "account_number"
     t.decimal "bill", precision: 10, scale: 2
     t.integer "descriptor", default: 0

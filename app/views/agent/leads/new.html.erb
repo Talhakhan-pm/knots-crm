@@ -15,7 +15,7 @@
     </div>
     <div class= "mb-4">
     <label class= "block"> Phone Number
-      <input type="number" name="lead[phone_number]" value="<%=@lead.phone_number	%>" id="" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 pr-10 sm:text-sm border-gray-300 rounded-md py-2 outline-none appearance-none" placeholder="+1 707 216 2136">
+      <input type="number" name="lead[phone_number]" value="<%=@lead.phone_number	%>" id="" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2 pr-10 sm:text-sm border-gray-300 rounded-md py-2 outline-none appearance-none" placeholder="+1 707 216 2136" maximum= "13">
     </label>
     </div>
     <div class= "mb-4" data-controller="address" data-action="map-loaded@window->address#initGoogle">

@@ -17,7 +17,9 @@
 #
 class Lead < ApplicationRecord
   belongs_to :agent, class_name: 'User'
-
+  validates :phone_number, presence: true, length: {maximum: 99999999999999999}
+  
+  
   #SCOPES
   scope :since, lambda {|time| where("created_at > ?", time) }
   scope :during_last, lambda {|time| where("created_at > ?", (Time.now - time)) }
