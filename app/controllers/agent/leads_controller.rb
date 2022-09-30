@@ -6,7 +6,7 @@ class Agent::LeadsController < ApplicationController
   def create
     @lead = current_user.leads.new(user_params)
     if @lead.save
-      redirect_to agent_lead_path(@lead)
+      redirect_to agent_leads_path
     else
       flash.now[:errors]= @lead.errors.full_messages
       render :new

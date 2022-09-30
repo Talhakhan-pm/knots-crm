@@ -12,6 +12,7 @@ export default class extends Controller {
     console.log("Google maps is initialized and the address controller is ready")
     console.log(google)
     this.autocomplete = new google.maps.places.Autocomplete(this.inputTarget, {
+      componentRestrictions: { country: ["us"] },
       fields: ["address_components", "geometry"],
       types: ["address"],
     })
@@ -21,6 +22,6 @@ export default class extends Controller {
   placeSelected(){
     const place = this.autocomplete.getPlace();
     console.log(place); 
-
+    
   }
 }

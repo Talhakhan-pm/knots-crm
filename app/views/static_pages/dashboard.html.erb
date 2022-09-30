@@ -21,3 +21,31 @@
 
 
 <h1 class="font-bold text-lg"> <%= link_to "New Lead", new_agent_lead_path %> </h1>
+
+  <div class="mt-20 flex flex-col justify-center items-center ">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-1/2 py-2 align-middle md:px-6 lg:px-8">
+        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gray-50">
+              <tr class="divide-x divide-gray-200">
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">($) Sales </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
+            <% @users.each do |l| %>
+              <% if l != nil %>
+              <tr class="divide-x divide-gray-200">
+                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6"> <%= link_to "#{l.name}", agent_leads_path(l) %> </td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500"><%= l.email%></td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">$<%= l.leads.during_last(3.hours).sum(:bill) %></td>
+              </tr>
+              <% end %>
+            
+            <% end %>
+            
+              <!-- More people... -->
+            </tbody>
+          </table>
